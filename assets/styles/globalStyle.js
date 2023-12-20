@@ -32,4 +32,8 @@ export const globalStyle = StyleSheet.create({
     fontSize: 6,
     fontFamily: getFontFamily('Inter', '600'),
   },
+  userStoryContainer: {
+    marginTop: 20,
+    marginHorizontal: 28,
+  },
 });
