@@ -6,6 +6,8 @@ import {
   View,
   Text,
   FlatList,
+  Switch,
+  Platform,
   // Dimensions,
 } from 'react-native';
 import {Title} from './components/Title/Title';
@@ -135,6 +137,8 @@ function App() {
 
   // const [screenData, setScreenData] = useState(Dimensions.get('screen'));
 
+  const [isOn, setIsOn] = useState(false);
+
   const pagination = (database, currentPage, pageSize) => {
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
@@ -180,6 +184,26 @@ function App() {
                     <Text style={globalStyle.messageNumber}>2</Text>
                   </View>
                 </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  justifyContent: 'flex-start',
+                }}>
+                <Switch
+                  value={isOn}
+                  style={
+                    Platform.OS === 'android' && {
+                      transform: [{scale: 1.5}],
+                    }
+                  }
+                  // trackColor={
+                  //   Platform.OS === 'android' && {false: 'grey', true: 'red'}
+                  // }
+                  // ios_backgroundColor={'#000'}
+                  onValueChange={val => setIsOn(val)}
+                />
               </View>
               <View style={globalStyle.userStoryContainer}>
                 <FlatList
