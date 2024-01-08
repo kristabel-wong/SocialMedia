@@ -9,6 +9,11 @@ import {
   faHeart,
   faMessage,
 } from '@fortawesome/free-regular-svg-icons';
+import {
+  horizontalScale,
+  scaleFontSize,
+  verticalScale,
+} from '../../assets/styles/scaling';
 
 interface UserPostProps {
   firstName: string;
@@ -35,7 +40,10 @@ export const UserPost = ({
     <View style={style.userPostContainer}>
       <View style={style.userPostHeader}>
         <View style={style.userDetailsContainer}>
-          <UserProfileImage profileImage={profileImage} imageDimensions={48} />
+          <UserProfileImage
+            profileImage={profileImage}
+            imageDimensions={horizontalScale(48)}
+          />
           <View style={style.userPostHeaderText}>
             <Text style={style.userName}>
               {firstName} {lastName}
@@ -43,7 +51,11 @@ export const UserPost = ({
             {location && <Text style={style.location}>{location}</Text>}
           </View>
         </View>
-        <FontAwesomeIcon icon={faEllipsisH} color={'#79869F'} size={24} />
+        <FontAwesomeIcon
+          icon={faEllipsisH}
+          color={'#79869F'}
+          size={scaleFontSize(24)}
+        />
       </View>
       <View style={style.postImage}>
         <Image source={image} />
@@ -68,9 +80,9 @@ export const UserPost = ({
 
 const style = StyleSheet.create({
   userPostContainer: {
-    marginTop: 35,
+    marginTop: verticalScale(35),
     borderBottomWidth: 1,
-    paddingBottom: 20,
+    paddingBottom: verticalScale(20),
     borderBottomColor: '#EFF2F6',
   },
   userPostHeader: {
@@ -80,7 +92,7 @@ const style = StyleSheet.create({
   },
   userPostHeaderText: {
     justifyContent: 'center',
-    marginLeft: 10,
+    marginLeft: horizontalScale(10),
   },
   userDetailsContainer: {
     flexDirection: 'row',
@@ -88,31 +100,31 @@ const style = StyleSheet.create({
   userName: {
     color: '#000',
     fontFamily: getFontFamily('Inter', '600'),
-    fontSize: 16,
+    fontSize: scaleFontSize(16),
   },
   location: {
     color: '#79869F',
     fontFamily: getFontFamily('Inter', '400'),
-    fontSize: 12,
-    marginTop: 5,
+    fontSize: scaleFontSize(12),
+    marginTop: verticalScale(5),
   },
   postImage: {
     alignItems: 'center',
-    marginVertical: 20,
+    marginVertical: verticalScale(20),
   },
   likesContainer: {
     flexDirection: 'row',
   },
   userPostStatsText: {
-    marginLeft: 3,
+    marginLeft: horizontalScale(3),
     color: '#79869F',
   },
   commentsContainer: {
     flexDirection: 'row',
-    marginLeft: 27,
+    marginLeft: horizontalScale(27),
   },
   userPostStats: {
-    marginLeft: 10,
+    marginLeft: horizontalScale(10),
     flexDirection: 'row',
   },
 });

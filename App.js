@@ -6,6 +6,7 @@ import {
   View,
   Text,
   FlatList,
+  // Dimensions,
 } from 'react-native';
 import {Title} from './components/Title/Title';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -13,6 +14,7 @@ import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import {globalStyle} from './assets/styles/globalStyle';
 import {UserStory} from './components/UserStory/UserStory';
 import {UserPost} from './components/UserPost/UserPost';
+import {scaleFontSize} from './assets/styles/scaling';
 
 function App() {
   const userStories = [
@@ -131,6 +133,8 @@ function App() {
   const [userPostsRenderedData, setUserPostsRenderedData] = useState([]);
   const [isLoadingUserPosts, setIsLoadingUserPosts] = useState(false);
 
+  // const [screenData, setScreenData] = useState(Dimensions.get('screen'));
+
   const pagination = (database, currentPage, pageSize) => {
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
@@ -152,6 +156,10 @@ function App() {
     const getInitialDataPosts = pagination(userPosts, 1, userPostsPageSize);
     setUserPostsRenderedData(getInitialDataPosts);
     setIsLoadingUserPosts(false);
+
+    // Dimensions.addEventListener('change', result =>
+    //   setScreenData(result.screen),
+    // );
   }, []);
 
   return (
@@ -166,7 +174,7 @@ function App() {
                   <FontAwesomeIcon
                     icon={faEnvelope}
                     color={'#898DAE'}
-                    size={20}
+                    size={scaleFontSize(20)}
                   />
                   <View style={globalStyle.messageNumberContainer}>
                     <Text style={globalStyle.messageNumber}>2</Text>

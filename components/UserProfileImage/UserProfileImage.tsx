@@ -1,5 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
+import {horizontalScale} from '../../assets/styles/scaling';
 
 interface UserProfileImageProps {
   profileImage: any;
@@ -24,6 +25,6 @@ const style = StyleSheet.create({
   userImageContainer: {
     borderColor: '#F35BAC',
     borderWidth: 2,
-    padding: 3,
+    padding: horizontalScale(3),
   },
 });
