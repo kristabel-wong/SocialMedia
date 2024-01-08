@@ -6,8 +6,9 @@ import {
   View,
   Text,
   FlatList,
-  Switch,
-  Platform,
+  // Switch,
+  // Platform,
+  StatusBar,
   // Dimensions,
 } from 'react-native';
 import {Title} from './components/Title/Title';
@@ -137,7 +138,7 @@ function App() {
 
   // const [screenData, setScreenData] = useState(Dimensions.get('screen'));
 
-  const [isOn, setIsOn] = useState(false);
+  // const [isOn, setIsOn] = useState(false);
 
   const pagination = (database, currentPage, pageSize) => {
     const startIndex = (currentPage - 1) * pageSize;
@@ -168,6 +169,7 @@ function App() {
 
   return (
     <SafeAreaView>
+      <StatusBar backgroundColor={'pink'} barStyle={'light-content'} />
       <View>
         <FlatList
           ListHeaderComponent={
@@ -185,7 +187,7 @@ function App() {
                   </View>
                 </TouchableOpacity>
               </View>
-              <View
+              {/* <View
                 style={{
                   flex: 1,
                   flexDirection: 'row',
@@ -204,7 +206,7 @@ function App() {
                   // ios_backgroundColor={'#000'}
                   onValueChange={val => setIsOn(val)}
                 />
-              </View>
+              </View> */}
               <View style={globalStyle.userStoryContainer}>
                 <FlatList
                   onEndReachedThreshold={0.5}
