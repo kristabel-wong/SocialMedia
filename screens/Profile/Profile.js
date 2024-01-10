@@ -17,6 +17,7 @@ import {
 import {faHouse} from '@fortawesome/free-solid-svg-icons';
 import {Routes} from '../../navigation/Routes';
 import {getFontFamily} from '../../assets/fonts/helper';
+import {ProfileTabsNavigation} from '../../navigation/MainNavigation';
 
 export default function Profile({navigation}) {
   return (
@@ -46,6 +47,9 @@ export default function Profile({navigation}) {
             <Text style={style.statAmount}>100</Text>
             <Text style={style.statType}>Posts</Text>
           </View>
+        </View>
+        <View style={globalStyle.flex}>
+          <ProfileTabsNavigation />
         </View>
       </ScrollView>
     </SafeAreaView>
