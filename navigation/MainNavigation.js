@@ -9,8 +9,9 @@ const Drawer = createDrawerNavigator();
 
 const MainMenuNavivation = () => {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator screenOptions={{header: () => null, headerShown: false}}>
       <Drawer.Screen name={Routes.Home} component={Home} />
+      <Drawer.Screen name={Routes.Profile} component={Profile} />
     </Drawer.Navigator>
   );
 };
@@ -20,8 +21,7 @@ export const MainNavigation = () => {
     <Stack.Navigator
       screenOptions={{header: () => null, headerShown: false}}
       initialRouteName={Routes.Home}>
-      <Stack.Screen name={Routes.Home} component={Home} />
-      <Stack.Screen name={Routes.Profile} component={Profile} />
+      <Stack.Screen name={'Drawer'} component={MainMenuNavivation} />
     </Stack.Navigator>
   );
 };
