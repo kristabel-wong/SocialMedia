@@ -4,40 +4,52 @@ import Home from '../screens/Home/Home';
 import Profile from '../screens/Profile/Profile';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {Text, View} from 'react-native';
+import {ProfileTabTitle} from '../components/ProfileTabTitle/ProfileTabTitle';
+import {ProfileTabContent} from '../components/ProfileTabContent/ProfileTabContent';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const ProfileTabs = createMaterialTopTabNavigator();
 
-const Tab1 = () => {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>This is Tab 1</Text>
-    </View>
-  );
-};
-const Tab2 = () => {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>This is Tab 2</Text>
-    </View>
-  );
-};
-const Tab3 = () => {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>This is Tab 3</Text>
-    </View>
-  );
-};
-
 export const ProfileTabsNavigation = () => {
   return (
-    <ProfileTabs.Navigator>
-      <ProfileTabs.Screen name={'Tab1'} component={Tab1} />
-      <ProfileTabs.Screen name={'Tab2'} component={Tab2} />
-      <ProfileTabs.Screen name={'Tab3'} component={Tab3} />
+    <ProfileTabs.Navigator
+      screenOptions={{
+        tabBarIndicatorStyle: {
+          backgroundColor: 'transparent',
+        },
+        tabBarStyle: {
+          zIndex: 0,
+          elevation: 0,
+        },
+      }}>
+      <ProfileTabs.Screen
+        name={'Tab1'}
+        options={{
+          tabBarLabel: ({focused}) => (
+            <ProfileTabTitle isFocused={focused} title={'Photos'} />
+          ),
+        }}
+        component={ProfileTabContent}
+      />
+      <ProfileTabs.Screen
+        name={'Tab2'}
+        options={{
+          tabBarLabel: ({focused}) => (
+            <ProfileTabTitle isFocused={focused} title={'Videos'} />
+          ),
+        }}
+        component={ProfileTabContent}
+      />
+      <ProfileTabs.Screen
+        name={'Tab3'}
+        options={{
+          tabBarLabel: ({focused}) => (
+            <ProfileTabTitle isFocused={focused} title={'Saved'} />
+          ),
+        }}
+        component={ProfileTabContent}
+      />
     </ProfileTabs.Navigator>
   );
 };
